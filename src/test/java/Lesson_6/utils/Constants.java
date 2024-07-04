@@ -1,4 +1,4 @@
-package utils;
+package Lesson_6.utils;
 
 public class Constants {
 
