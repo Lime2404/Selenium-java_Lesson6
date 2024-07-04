@@ -19,10 +19,22 @@ public class MainPage extends BaseSeleniumPage {
     @FindBy(xpath = "//div[@class='category-cards']")
     private WebElement categoryCards;
 
-    @FindBy(xpath = "//div[@class='card mt-4 top-card']']")
+    @FindBy(xpath = "//div[@class='card mt-4 top-card']")
     private WebElement elements;
 
+    public MainPage(){
+        driver.get(ConfigProvider.URL);
+        PageFactory.initElements(driver, this);
+    }
 
+        public String returnCard(){
+       return categoryCards.getText();
+    }
+
+//    public void clicOnElements() {
+//
+//        elements.click(); // вынести в отдельный класс, так как не везде нужны;
+//    }
 
 // +   private final By categoryCards = By.xpath("//div[@class='category-cards']");
 
@@ -35,28 +47,19 @@ public class MainPage extends BaseSeleniumPage {
 //тут вызываются все элементы на странице, но если какой-то элемент появится позже, то будут проблемы
 //    private WebElement queueListElements = driver.findElement(categoryCards);
 
-    public MainPage(){
-        driver.get(ConfigProvider.URL);
-        PageFactory.initElements(driver, this);
-    }
+
 
 //    public MainPage(String url){
 //        Selenide.open(url);
 //    }
 //
-public void clicOnElements() {
 
-    // вынести в отдельный класс, так как не везде нужны
-    elements.click(); // но этого этапа мало. Для начала нам надо откоыть браузер и открыт страницу
-}
 //
 //    public void clicOnElement(){
 //        elementsButton.click(); // но этого этапа мало. Для начала нам надо откоыть браузер и открыт страницу
 //    }
 //
-//    public String returnCard(){
-//       return categoryCards.getTagName();
-//    }
+
 //
 //
 //    public ElementsCollection getCategoryCards() {
