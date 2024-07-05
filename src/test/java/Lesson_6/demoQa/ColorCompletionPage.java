@@ -11,12 +11,8 @@ import java.util.Random;
 
 public class ColorCompletionPage extends BaseSeleniumPage {
 
-    //    private final static String BASE_URL = "https://demoqa.com/";
-//    public ColorCompletionPage(String url){
-//        Selenide.open(url);
     public ColorCompletionPage() {
-        driver.get(ConfigProvider.URL + "progress-bar");
-//        driver.get(ConfigProvider.URL);
+        driver.get(ConfigProvider.URL + "auto-complete");
         PageFactory.initElements(driver, this);
     }
 
@@ -24,7 +20,7 @@ public class ColorCompletionPage extends BaseSeleniumPage {
     @FindBy(xpath = "//input[@id='autoCompleteMultipleInput']")
     private WebElement inputElement;
 
-    public void randomizer(String[] colors) {
+    public void randomizer(String[] colors) throws InterruptedException {
 
         Random random = new Random();
         int firstIndex = random.nextInt(colors.length);
@@ -39,6 +35,9 @@ public class ColorCompletionPage extends BaseSeleniumPage {
 //        inputElement
 
 //        SelenideElement inputElement = $(By.xpath("//input[@id='autoCompleteMultipleInput']"));
+        inputElement.sendKeys(firstColor);
+//        driver.wait(10);
+        inputElement.sendKeys(secondColor);
 //        inputElement.setValue(firstColor).pressEnter();
 //        inputElement.setValue(secondColor).pressEnter();
     }

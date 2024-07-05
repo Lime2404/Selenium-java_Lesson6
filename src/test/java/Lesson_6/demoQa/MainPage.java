@@ -19,7 +19,7 @@ public class MainPage extends BaseSeleniumPage {
     @FindBy(xpath = "//div[@class='category-cards']")
     private WebElement categoryCards;
 
-    @FindBy(xpath = "//div[@class='card mt-4 top-card']")
+    @FindBy(xpath = "//div[@class='card mt-4 top-card'][1]")
     private WebElement elements;
 
     public MainPage(){
@@ -31,9 +31,12 @@ public class MainPage extends BaseSeleniumPage {
        return categoryCards.getText();
     }
 
-//    public void clicOnElements() {
-//
-//        elements.click(); // вынести в отдельный класс, так как не везде нужны;
+    public void clicOnElements() {
+        elements.click(); // вынести в отдельный класс, так как не везде нужны;
+    }
+
+//    public String getElementAttr(){
+//       return elements.getText();
 //    }
 
 // +   private final By categoryCards = By.xpath("//div[@class='category-cards']");
