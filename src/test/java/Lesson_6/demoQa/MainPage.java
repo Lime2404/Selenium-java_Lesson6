@@ -4,6 +4,7 @@ package Lesson_6.demoQa;
 import Lesson_6.core.BaseSeleniumPage;
 import Lesson_6.readProperrties.ConfigProvider;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -16,22 +17,24 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BaseSeleniumPage {
 
+    public MainPage(){
+        driver.get(ConfigProvider.URL);
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(xpath = "//div[@class='category-cards']")
     private WebElement categoryCards;
 
     @FindBy(xpath = "//div[@class='card mt-4 top-card'][1]")
     private WebElement elements;
 
-    public MainPage(){
-        driver.get(ConfigProvider.URL);
-        PageFactory.initElements(driver, this);
-    }
+
 
         public String returnCard(){
        return categoryCards.getText();
     }
 
-    public void clicOnElements() {
+    public void clickOnElements() {
         elements.click(); // вынести в отдельный класс, так как не везде нужны;
     }
 

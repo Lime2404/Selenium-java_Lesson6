@@ -46,21 +46,25 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         Assertions.assertArrayEquals(expectedElements, actualList);
 //        logger.info("Assert returns");
     }
+    //may be since I am in Kazakhstan, server sometimes is reseting connection
 //
 //    /**
 //     * Assert that the first element from the collection consist of the expected entities list
 //     */
     @Test
-    public void verifyElementPageEntities() {
+    public void verifyElementPageEntities() throws InterruptedException {
         String[] expectedList = {"Text Box", "Check Box", "Radio Button", "Web Tables", "Buttons", "Links", "Broken Links - Images", "Upload and Download", "Dynamic Properties"};
         MainPage mainPage2 = new MainPage();
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        mainPage2.clicOnElements();
+        mainPage2.clickOnElements();
+//        wait(10000L);
+
         ElementsPage sideBarElements = new ElementsPage();
-        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();
+        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).collect(Collectors.toList());
+        System.out.println(expectedList);
+        System.out.println(actualList.toArray());
+        //        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();
         Assertions.assertArrayEquals(expectedList, actualList.toArray());
-
     }
 
     @Test
@@ -91,10 +95,11 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         colorCompletionPage.randomizer(colors);
         System.out.println("Two random color sets have been selected");
 
+        wait(10000L);
 //        driver.wait(20);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.wait(10);
-        int a = 0;
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        driver.wait(10);
+//        int a = 0;
 //        Selenide.sleep(10000L);
 
     }

@@ -3,6 +3,7 @@ package Lesson_6.demoQa;
 
 import Lesson_6.core.BaseSeleniumPage;
 import Lesson_6.readProperrties.ConfigProvider;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -31,14 +32,22 @@ public class ColorCompletionPage extends BaseSeleniumPage {
 
         String firstColor = colors[firstIndex];
         String secondColor = colors[secondIndex];
-                                                                                                        //  VOVA: как задать данные цветов ?
+        inputValuesWithSpace(firstColor);
+        inputValuesWithSpace(secondColor);
+        //  VOVA: как задать данные цветов ?
 //        inputElement
 
 //        SelenideElement inputElement = $(By.xpath("//input[@id='autoCompleteMultipleInput']"));
-        inputElement.sendKeys(firstColor);
-//        driver.wait(10);
-        inputElement.sendKeys(secondColor);
+//        inputElement.sendKeys(firstColor);
+////        driver.wait(10);
+//        inputElement.sendKeys(secondColor);
 //        inputElement.setValue(firstColor).pressEnter();
 //        inputElement.setValue(secondColor).pressEnter();
+
+    }
+    private void inputValuesWithSpace(String value){
+        inputElement.sendKeys(value);
+//        inputElement.sendKeys(" ");
+        inputElement.sendKeys(Keys.ENTER);
     }
 }
