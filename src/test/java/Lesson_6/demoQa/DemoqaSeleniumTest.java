@@ -66,6 +66,8 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         //        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();
         Assertions.assertArrayEquals(expectedList, actualList.toArray());
     }
+// первый тест с логированием
+
 
     @Test
     public void getStartButtonStatus() {

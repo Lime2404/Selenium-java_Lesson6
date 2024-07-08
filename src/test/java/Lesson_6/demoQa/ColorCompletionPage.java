@@ -3,6 +3,8 @@ package Lesson_6.demoQa;
 
 import Lesson_6.core.BaseSeleniumPage;
 import Lesson_6.readProperrties.ConfigProvider;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,9 +14,11 @@ import java.util.Random;
 
 public class ColorCompletionPage extends BaseSeleniumPage {
 
+    private static final Logger logger = LogManager.getLogger(ColorCompletionPage.class);
     public ColorCompletionPage() {
         driver.get(ConfigProvider.URL + "auto-complete");
         PageFactory.initElements(driver, this);
+        logger.info("Открыта страница: " + ConfigProvider.URL+"auto-complete");
     }
 
 
@@ -49,5 +53,6 @@ public class ColorCompletionPage extends BaseSeleniumPage {
         inputElement.sendKeys(value);
 //        inputElement.sendKeys(" ");
         inputElement.sendKeys(Keys.ENTER);
+        logger.info("Цвет выбраны");
     }
 }

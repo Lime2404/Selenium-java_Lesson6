@@ -3,11 +3,16 @@ package Lesson_6.demoQa;
 
 import Lesson_6.core.BaseSeleniumPage;
 import Lesson_6.readProperrties.ConfigProvider;
+import Lesson_6.utils.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.net.URL;
 
 //import static Lesson_6.core.BaseSeleniumPage.driver;
 
@@ -17,10 +22,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BaseSeleniumPage {
 
+    private static final Logger logger = LogManager.getLogger(MainPage.class);
     public MainPage(){
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
+        logger.info("Открыта страница: " + ConfigProvider.URL);
     }
+
+//    WebDriverManager webDriverManager = new WebDriverManager();
+//    WebDriver driver = webDriverManager.getDriver();
+
 
     @FindBy(xpath = "//div[@class='category-cards']")
     private WebElement categoryCards;
@@ -35,7 +46,7 @@ public class MainPage extends BaseSeleniumPage {
     }
 
     public void clickOnElements() {
-        elements.click(); // вынести в отдельный класс, так как не везде нужны;
+        elements.click(); logger.info("Клик по элементу выполнен"); // вынести в отдельный класс, так как не везде нужны;
     }
 
 //    public String getElementAttr(){
