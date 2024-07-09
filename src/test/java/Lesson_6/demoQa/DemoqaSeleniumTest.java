@@ -2,6 +2,7 @@ package Lesson_6.demoQa;
 
 
 import Lesson_6.core.BaseSeleniumTest;
+import Lesson_6.demoQa.Pages.RegistrationPage;
 import Lesson_6.readProperrties.ConfigProvider;
 import org.apache.logging.log4j.core.util.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -10,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.URISyntaxException;
 import java.sql.SQLOutput;
 import java.time.Duration;
 import java.util.Arrays;
@@ -105,4 +107,41 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 //        Selenide.sleep(10000L);
 
     }
+
+    @Test
+    void fillFormTest() throws InterruptedException, URISyntaxException {
+        RegistrationPage registrationPage = new RegistrationPage();
+//        wait(10000L);
+       String firstName = "Ivan";
+       String lastName = "Ivanov";
+       String userEmailInput = "Ivan.Ivanov@mail.ru";
+       String genderRadioPick = "Male";
+       String mobilePhone = "7123123456";
+       String subject = "Physics";
+       String hobbiesSport = "Sports";
+       String birthdayYear = "1987";
+       String birthdayMonth = "April";
+       String birthdayDate = "24";
+       String state = "NCR";
+       String city = "Delhi";
+       String fileName = "img/10_reasons.png";
+       String currentAddressInput = "currentAddress";
+
+
+        registrationPage.setFirstName(firstName);
+        registrationPage.setLastName(lastName);
+        registrationPage.setUserEmail(userEmailInput);
+        registrationPage.setMobilePhone(mobilePhone);
+        registrationPage.chooseGenderInWrapper(genderRadioPick);
+        registrationPage.setSubjectBySendKeys(subject);
+        registrationPage.setHobby(hobbiesSport);
+        registrationPage.setCurrentAddress(currentAddressInput);
+        registrationPage.selectStateFromDropDownList(state);
+        registrationPage.selectCityFromDropDownList(city);
+        registrationPage.clickSubmitButton();
+        registrationPage.uploadPicture(fileName);
+//        registrationPage.setBirthDate(birthdayYear, birthdayMonth, birthdayDate);
+
+    }
+
 }
