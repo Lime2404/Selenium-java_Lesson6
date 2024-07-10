@@ -1,4 +1,4 @@
-package Lesson_6.demoQa;
+package Lesson_6.demoQa.Pages;
 
 import Lesson_6.core.BaseSeleniumPage;
 import Lesson_6.readProperrties.ConfigProvider;

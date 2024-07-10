@@ -1,4 +1,4 @@
-package Lesson_6.demoQa;
+package Lesson_6.demoQa.Pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

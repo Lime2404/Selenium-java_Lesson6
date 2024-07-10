@@ -2,26 +2,21 @@ package Lesson_6.demoQa;
 
 
 import Lesson_6.core.BaseSeleniumTest;
-import Lesson_6.demoQa.Pages.RegistrationPage;
+import Lesson_6.demoQa.Pages.*;
 import Lesson_6.readProperrties.ConfigProvider;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.HttpResponse;
-import org.apache.logging.log4j.core.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.sql.SQLOutput;
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 
@@ -48,8 +43,8 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         MainPage mainPage = new MainPage();
         String names = mainPage.returnCard();
         String[] actualList = names.split("\n+");
-//        System.out.println("Expected "+ Arrays.stream(expectedElements).toList());
-//        System.out.println("Actual "+ Arrays.stream(actualList).toList());
+        System.out.println("Expected "+ Arrays.stream(expectedElements).toList());
+        System.out.println("Actual "+ Arrays.stream(actualList).toList());
         Assertions.assertArrayEquals(expectedElements, actualList);
 //        logger.info("Assert returns");
     }

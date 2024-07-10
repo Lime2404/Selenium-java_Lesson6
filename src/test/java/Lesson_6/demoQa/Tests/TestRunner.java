@@ -1,7 +1,7 @@
 package Lesson_6.demoQa.Tests;
 
 import Lesson_6.core.BaseSeleniumTest;
-import Lesson_6.demoQa.ExamplePage;
+import Lesson_6.demoQa.Pages.ExamplePage;
 import Lesson_6.utils.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 

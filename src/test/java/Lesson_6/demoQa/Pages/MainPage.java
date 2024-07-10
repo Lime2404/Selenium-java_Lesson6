@@ -1,4 +1,4 @@
-package Lesson_6.demoQa;
+package Lesson_6.demoQa.Pages;
 
 
 import Lesson_6.core.BaseSeleniumPage;
@@ -6,13 +6,9 @@ import Lesson_6.readProperrties.ConfigProvider;
 //import Lesson_6.utils.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.net.URL;
 
 //import static Lesson_6.core.BaseSeleniumPage.driver;
 
