@@ -14,7 +14,7 @@ public class ElementsPage extends BaseSeleniumPage {
     private static final Logger logger = LogManager.getLogger(ElementsPage.class);
 
     public ElementsPage(){
-        driver.get(ConfigProvider.URL);
+//        driver.get(ConfigProvider.URL+"auto-complete");
         PageFactory.initElements(driver, this);
         logger.info("Открыта страница: " + ConfigProvider.URL+"auto-complete");
     }

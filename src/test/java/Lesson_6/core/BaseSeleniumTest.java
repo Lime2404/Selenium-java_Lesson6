@@ -14,18 +14,19 @@ import java.util.concurrent.TimeUnit;
 abstract public class BaseSeleniumTest {
 //    WebDriverManager webDriverManager = new WebDriverManager();
 //    WebDriver driver = webDriverManager.getDriver();
-    private static final Logger logger = LogManager.getLogger(Lesson_6.utils.WebDriverManager.class);
+    private static final Logger logger = LogManager.getLogger(BaseSeleniumTest.class.getName());
     protected WebDriver driver;
 
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        logger.info("ChromeDriver инициализирован кем? - " + getCallerClassName());
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//        BaseSeleniumPage.setDriver(driver);
-        logger.info("ChromeDriver инициализирован");
+        BaseSeleniumPage.setDriver(driver);
+
 
     }
 
@@ -35,5 +36,11 @@ abstract public class BaseSeleniumTest {
         logger.info("Браузер закрыт");
         driver.quit();
 
+    }
+
+    private static String getCallerClassName() {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        // Return the class that called the getDriver method (index 3 in the stack trace)
+        return stackTrace[3].getClassName();
     }
 }

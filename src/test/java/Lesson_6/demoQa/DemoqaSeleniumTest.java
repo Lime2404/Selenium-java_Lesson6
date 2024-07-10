@@ -4,6 +4,10 @@ package Lesson_6.demoQa;
 import Lesson_6.core.BaseSeleniumTest;
 import Lesson_6.demoQa.Pages.RegistrationPage;
 import Lesson_6.readProperrties.ConfigProvider;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpResponse;
 import org.apache.logging.log4j.core.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,6 +15,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLOutput;
 import java.time.Duration;
@@ -63,8 +68,8 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 
         ElementsPage sideBarElements = new ElementsPage();
         List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).collect(Collectors.toList());
-        System.out.println(expectedList);
-        System.out.println(actualList.toArray());
+        System.out.println("Expected list " + Arrays.stream(expectedList).toList());
+        System.out.println("Actual list " + Arrays.stream(actualList.stream().toArray()).toList());
         //        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();
         Assertions.assertArrayEquals(expectedList, actualList.toArray());
     }
@@ -138,10 +143,26 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         registrationPage.setCurrentAddress(currentAddressInput);
         registrationPage.selectStateFromDropDownList(state);
         registrationPage.selectCityFromDropDownList(city);
-        registrationPage.clickSubmitButton();
         registrationPage.uploadPicture(fileName);
-//        registrationPage.setBirthDate(birthdayYear, birthdayMonth, birthdayDate);
+        registrationPage.setBirthDate(birthdayYear, birthdayMonth, birthdayDate);
+        registrationPage.clickSubmitButton();
 
+    }
+@Test
+
+// Cерег привет. Слушай, не могу победить вот этот warning org.openqa.selenium.remote.http.WebSocket$Listener onError
+// посмотрел, что даже на stack overflow с такой же проблемой люди сталкиваются https://stackoverflow.com/questions/76782505/how-i-can-fix-this-warning-org-openqa-selenium-remote-http-websocketlistener-on
+    void mainTest() {
+        MainPage mainPage3 = new MainPage();
+        HttpClient client = HttpClients.createDefault();
+        HttpGet request = new HttpGet("https://demoqa.com/");
+
+        try {
+            HttpResponse response = client.execute(request);
+            System.out.println("Response Code: " + response.getCode());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

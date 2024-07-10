@@ -3,7 +3,7 @@ package Lesson_6.demoQa;
 
 import Lesson_6.core.BaseSeleniumPage;
 import Lesson_6.readProperrties.ConfigProvider;
-import Lesson_6.utils.WebDriverManager;
+//import Lesson_6.utils.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;

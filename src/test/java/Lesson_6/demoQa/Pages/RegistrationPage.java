@@ -12,13 +12,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
-import java.security.Key;
-import java.util.HashMap;
 
 public class RegistrationPage extends BaseSeleniumPage {
 
     public RegistrationPage() {
-        driver.get(ConfigProvider.URL + "automation-practice-form");
+        driver.get(ConfigProvider.URL + "automation-practice-form#google_vignette");
         PageFactory.initElements(driver, this);
     }
 
@@ -94,6 +92,9 @@ public class RegistrationPage extends BaseSeleniumPage {
 
     public RegistrationPage setBirthDate(String year, String month, String day) {
         calendar.click();
+//        calendar.sendKeys(Keys.);
+//        calendar.clear();
+//        calendar.sendKeys(day + " " + month + " " + year);
         calendarComponent.setDate(year, month, day);
         return this;
     }
