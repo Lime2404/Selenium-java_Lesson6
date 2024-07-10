@@ -10,8 +10,6 @@ public class WebDriverManager {
     private WebDriver driver;
 
     public WebDriverManager() {
-        // Укажите путь к драйверу Chrome
-        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\chromedriver.exe");
         driver = new ChromeDriver();
         logger.info("ChromeDriver инициализирован");
     }
@@ -31,5 +29,4 @@ public class WebDriverManager {
             logger.info("Браузер закрыт");
         }
     }
-
 }

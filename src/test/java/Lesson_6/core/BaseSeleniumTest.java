@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 // 1. Create a Maven project (Java) using the listed libraries
 abstract public class BaseSeleniumTest {
-//    WebDriverManager webDriverManager = new WebDriverManager();
-//    WebDriver driver = webDriverManager.getDriver();
     private static final Logger logger = LogManager.getLogger(BaseSeleniumTest.class.getName());
     protected WebDriver driver;
 
@@ -21,26 +19,22 @@ abstract public class BaseSeleniumTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        logger.info("ChromeDriver инициализирован кем? - " + getCallerClassName());
+        logger.info("ChromeDriver has been initialized - " + getCallerClassName());
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         BaseSeleniumPage.setDriver(driver);
-
-
     }
 
     @AfterEach
     public void tearDown() {
         driver.close();
-        logger.info("Браузер закрыт");
+        logger.info("Browser is closed");
         driver.quit();
-
     }
 
     private static String getCallerClassName() {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        // Return the class that called the getDriver method (index 3 in the stack trace)
         return stackTrace[3].getClassName();
     }
 }
