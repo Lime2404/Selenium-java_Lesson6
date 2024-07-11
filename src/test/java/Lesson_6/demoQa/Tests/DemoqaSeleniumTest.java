@@ -32,8 +32,8 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         MainPage mainPage = new MainPage();
         String names = mainPage.returnCard();
         String[] actualList = names.split("\n+");
-//        System.out.println("Expected "+ Arrays.stream(expectedElements).toList());
-//        System.out.println("Actual "+ Arrays.stream(actualList).toList());
+        System.out.println("Expected "+ Arrays.stream(expectedElements).toList());
+        System.out.println("Actual "+ Arrays.stream(actualList).toList());
         Assertions.assertArrayEquals(expectedElements, actualList);
         logger.info("Assert returns 200");
     }
@@ -45,7 +45,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     public void verifyElementPageEntities() {
         String[] expectedList = {"Text Box", "Check Box", "Radio Button", "Web Tables", "Buttons", "Links", "Broken Links - Images", "Upload and Download", "Dynamic Properties"};
         MainPage mainPage = new MainPage();
-//        mainPage.hideAds();
+        mainPage.scrollPageDown(driver);
         mainPage.clickOnElements();
 
         ElementsPage sideBarElements = new ElementsPage();
@@ -96,8 +96,9 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     @Test
     // Cергей, подскажи, надо ли еще проверять что всё засетилось? судя по задание надо только заполнить, но наверное надо типо проверить что всё реально засетилось
 
-    void fillFormTest() throws InterruptedException, URISyntaxException {
+    void fillFormTest() throws URISyntaxException, InterruptedException {
         RegistrationPage registrationPage = new RegistrationPage();
+
        String firstName = "Ivan";
        String lastName = "Ivanov";
        String userEmailInput = "Ivan.Ivanov@mail.ru";
@@ -113,7 +114,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
        String fileName = "img/10_reasons.png";
        String currentAddressInput = "currentAddress";
 
-
+//                wait(10000);
         registrationPage.setFirstName(firstName);
         registrationPage.setLastName(lastName);
         registrationPage.setUserEmail(userEmailInput);
@@ -126,6 +127,8 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         registrationPage.selectCityFromDropDownList(city);
         registrationPage.uploadPicture(fileName);
         registrationPage.setBirthDate(birthdayYear, birthdayMonth, birthdayDate);
+//         wait(10000);
+        registrationPage.scrollPageDown(driver);
         registrationPage.clickSubmitButton();
         logger.info("The form is fully filled");
     }
@@ -137,7 +140,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 //may be since I am in Kazakhstan, server sometimes is reseting connection
     void mainTest() {
         HttpClient client = HttpClients.createDefault();
-        HttpGet request = new HttpGet("https://demoqa.com/");
+        HttpGet request = new HttpGet("https://demoqa.com/automation-practice-form#google_vignette");
 
         try {
             HttpResponse response = client.execute(request);

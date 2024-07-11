@@ -3,10 +3,7 @@ package Lesson_6.demoQa.Pages;
 import Lesson_6.core.BaseSeleniumPage;
 import Lesson_6.readProperrties.ConfigProvider;
 import Lesson_6.utils.CalendarComponent;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -63,6 +60,9 @@ public class RegistrationPage extends BaseSeleniumPage {
 
     @FindBy(id = "submit")
     private WebElement submitButton;
+
+    @FindBy(id = "adplus-anchor")
+    private WebElement adplusAnchor;
 
     public RegistrationPage setFirstName (String firstName){
         firstNameInput.sendKeys(firstName);
@@ -150,6 +150,18 @@ public class RegistrationPage extends BaseSeleniumPage {
     public RegistrationPage clickSubmitButton(){
         submitButton.click();
         return this;
+    }
+
+    public void hideAds() {
+        if (adplusAnchor.isDisplayed()) {
+            adplusAnchor.sendKeys(Keys.DOWN);
+        }
+    }
+
+    public static void scrollPageDown(WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        // Прокрутите на 1000 пикселей вниз
+        js.executeScript("window.scrollBy(0, 1000);");
     }
 //
 //    public RegistrationPage checkForm(HashMap<String, String> formSubmit){
