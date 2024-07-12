@@ -14,16 +14,13 @@ public class ElementsPage extends BaseSeleniumPage {
 
     public ElementsPage(){
         PageFactory.initElements(driver, this);
-        logger.info("Открыта страница: " + ConfigProvider.URL+"auto-complete");
+        logger.info("The page: " + ConfigProvider.URL+"auto-complete" + " has been opened");
     }
 
-//    @FindBy(xpath = "//ul[@class='menu-list']")
-//    private WebElement elements;
-
     @FindBy(xpath = "//div[contains(@class, 'element-group')][1]//li[contains(@id, 'item-')]")
-    private List<WebElement> elementList;
+    private List<WebElement> elementsList;
 
     public List<WebElement> getElementsList() {
-        return elementList;
+        return elementsList;
     }
 }

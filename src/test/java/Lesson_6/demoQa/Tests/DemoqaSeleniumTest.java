@@ -13,18 +13,17 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-
 
 public class DemoqaSeleniumTest extends BaseSeleniumTest {
+
+//    7. Output all actions to the console using the Log4j library
     private static final Logger logger = LogManager.getLogger(DemoqaSeleniumTest.class);
 
 // 2. Using selenium webdriver to develop smoke autotests for the main page
 
     /**
-     * Assert that all element can be found on the main page
+     * 1. Assert that all element can be found on the main page
      */
     @Test
     public void assertMainPageElements() {
@@ -32,14 +31,14 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         MainPage mainPage = new MainPage();
         String names = mainPage.returnCard();
         String[] actualList = names.split("\n+");
-        System.out.println("Expected "+ Arrays.stream(expectedElements).toList());
-        System.out.println("Actual "+ Arrays.stream(actualList).toList());
+//        System.out.println("Expected "+ Arrays.stream(expectedElements).toList());
+//        System.out.println("Actual "+ Arrays.stream(actualList).toList());
         Assertions.assertArrayEquals(expectedElements, actualList);
         logger.info("Assert returns 200");
     }
 
     /**
-     * Assert that the first element from the collection consists of the expected entities list
+     * 2. Assert that the first element from the collection consists of the expected entities list
      */
     @Test
     public void verifyElementPageEntities() {
@@ -50,8 +49,8 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 
         ElementsPage sideBarElements = new ElementsPage();
         List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();
-        System.out.println("Expected list " + Arrays.stream(expectedList).toList());
-        System.out.println("Actual list " + Arrays.stream(actualList.toArray()).toList());
+//        System.out.println("Expected list " + Arrays.stream(expectedList).toList());
+//        System.out.println("Actual list " + Arrays.stream(actualList.toArray()).toList());
         Assertions.assertArrayEquals(expectedList, actualList.toArray());
         logger.info("Assert returns 200");
     }
@@ -64,7 +63,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     @Test
     public void getStartButtonStatus() {
         ProgressBarPage progressBar = new ProgressBarPage();
-//        progressBar.hideAds();
+        progressBar.scrollPageDown(driver);
         progressBar.clickStartButton();
         while (progressBar.getStartButton().getText().equals("Stop")) {
         }
@@ -77,7 +76,6 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 
 // 4. Using selenium webdriver to develop a test that selects values from the list //[Red, Green, Purple, Indigo] on the page https://demoqa.com/autocomplete
 //     "Type multiple color names". Important, 2 different values should //be selected at each run (use the Random function).
-
     /**
      * Select color randomly
      */
@@ -87,12 +85,12 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         String[] colors = {"Red", "Green", "Purple", "Indigo"};
         colorCompletionPage.randomizer(colors);
         logger.info("Two random color sets have been selected");
-//        wait(10000L);
-//        driver.wait(10);
-
     }
-//   5. Using selenium webdriver to develop an autotest that fills out a form on the page
 
+//   5. Using selenium webdriver to develop an autotest that fills out a form on the page
+    /**
+     * Fill in registration for
+     */
     @Test
     // Cергей, подскажи, надо ли еще проверять что всё засетилось? судя по задание надо только заполнить, но наверное надо типо проверить что всё реально засетилось
 
@@ -111,7 +109,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
        String birthdayDate = "24";
        String state = "NCR";
        String city = "Delhi";
-       String fileName = "img/10_reasons.png";
+       String fileName = "img/Solveva.png";
        String currentAddressInput = "currentAddress";
 
 //                wait(10000);
@@ -127,17 +125,16 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         registrationPage.selectCityFromDropDownList(city);
         registrationPage.uploadPicture(fileName);
         registrationPage.setBirthDate(birthdayYear, birthdayMonth, birthdayDate);
-//         wait(10000);
-        registrationPage.scrollPageDown(driver);
         registrationPage.clickSubmitButton();
         logger.info("The form is fully filled");
     }
 
 // Cерег привет. Слушай, не могу победить вот этот warning org.openqa.selenium.remote.http.WebSocket$Listener onError
+// и часто сервак соединение рвет java.net.SocketException: Connection reset
 // посмотрел, что даже на stack overflow с такой же проблемой люди сталкиваются https://stackoverflow.com/questions/76782505/how-i-can-fix-this-warning-org-openqa-selenium-remote-http-websocketlistener-on
 
 @Test
-//may be since I am in Kazakhstan, server sometimes is reseting connection
+//may be since I am in Kazakhstan, server sometimes is reseting connection, so I have this test to make sure server is responsive
     void mainTest() {
         HttpClient client = HttpClients.createDefault();
         HttpGet request = new HttpGet("https://demoqa.com/automation-practice-form#google_vignette");

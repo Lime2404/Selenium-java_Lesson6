@@ -92,9 +92,6 @@ public class RegistrationPage extends BaseSeleniumPage {
 
     public RegistrationPage setBirthDate(String year, String month, String day) {
         calendar.click();
-//        calendar.sendKeys(Keys.);
-//        calendar.clear();
-//        calendar.sendKeys(day + " " + month + " " + year);
         calendarComponent.setDate(year, month, day);
         return this;
     }
@@ -134,16 +131,11 @@ public class RegistrationPage extends BaseSeleniumPage {
         stateElement.click();
         return this;
     }
-//    }
-//
+
     public RegistrationPage selectCityFromDropDownList(String city) {
         cityDropDown.click();
-//        WebElement cityWrapperElement = driver.findElement(cityDropDownWrapper);
-
-        // Locate and click on the city option
         WebElement cityElement = cityDropDownWrapper.findElement(By.xpath(".//*[text()='" + city + "']"));
         cityElement.click();
-//        cityDropDownWrapper.$(byText(city)).click();
         return this;
     }
 
@@ -160,7 +152,6 @@ public class RegistrationPage extends BaseSeleniumPage {
 
     public static void scrollPageDown(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        // Прокрутите на 1000 пикселей вниз
         js.executeScript("window.scrollBy(0, 1000);");
     }
 //

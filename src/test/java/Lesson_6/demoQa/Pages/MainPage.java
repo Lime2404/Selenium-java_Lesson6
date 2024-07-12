@@ -8,8 +8,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.security.Key;
 import java.time.Duration;
 
 public class MainPage extends BaseSeleniumPage {
@@ -35,14 +33,10 @@ public class MainPage extends BaseSeleniumPage {
     }
 
     public void clickOnElements() {
-
-//        WebElement element = scrollUntilElementVisible(driver, "//div[@class='card mt-4 top-card'][1]");
-//        if (element != null) {
-//            System.out.println("Element is visible.");
             elements.click();
             logger.info("The element has been clicked"); // вынести в отдельный класс, так как не везде нужны;
-//        }
     }
+
 // attempting to scroll down to make sure element is visible and clickable
         public static WebElement scrollUntilElementVisible(WebDriver driver, String xpath) {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(03)); // Настройте таймаут ожидания
@@ -71,14 +65,8 @@ public class MainPage extends BaseSeleniumPage {
             return element;
         }
 
-//    public void hideAds(){
-//        if (adplusAnchor.isDisplayed()) {
-//            adplusAnchor.sendKeys(Keys.DOWN);
-//        }
-//    }
     public static void scrollPageDown(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        // Прокрутите на 1000 пикселей вниз
         js.executeScript("window.scrollBy(0, 1000);");
     }
 }

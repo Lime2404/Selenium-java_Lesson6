@@ -16,14 +16,13 @@ public class ColorCompletionPage extends BaseSeleniumPage {
     public ColorCompletionPage() {
         driver.get(ConfigProvider.URL + "auto-complete");
         PageFactory.initElements(driver, this);
-        logger.info("Открыта страница: " + ConfigProvider.URL+"auto-complete");
+        logger.info("The page: " + ConfigProvider.URL+"auto-complete" + " has been opened");
     }
 
     @FindBy(xpath = "//input[@id='autoCompleteMultipleInput']")
     private WebElement inputElement;
 
     public void randomizer(String[] colors) {
-
         Random random = new Random();
         int firstIndex = random.nextInt(colors.length);
         int secondIndex;

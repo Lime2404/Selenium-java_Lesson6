@@ -1,7 +1,5 @@
 package Lesson_6.core;
 
-//import io.github.bonigarcia.wdm.WebDriverManager;
-//import Lesson_6.utils.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 
 abstract public class BaseSeleniumPage {
