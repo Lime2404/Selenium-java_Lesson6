@@ -8,15 +8,17 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.Random;
 
 public class ColorCompletionPage extends BaseSeleniumPage {
 
     private static final Logger logger = LogManager.getLogger(ColorCompletionPage.class);
+
     public ColorCompletionPage() {
         driver.get(ConfigProvider.URL + "auto-complete");
         PageFactory.initElements(driver, this);
-        logger.info("The page: " + ConfigProvider.URL+"auto-complete" + " has been opened");
+        logger.info("The page: " + ConfigProvider.URL + "auto-complete" + " has been opened");
     }
 
     @FindBy(xpath = "//input[@id='autoCompleteMultipleInput']")
@@ -37,7 +39,8 @@ public class ColorCompletionPage extends BaseSeleniumPage {
         inputValuesWithSpace(secondColor);
 
     }
-    private void inputValuesWithSpace(String value){
+
+    private void inputValuesWithSpace(String value) {
         inputElement.sendKeys(value);
         inputElement.sendKeys(Keys.ENTER);
         logger.info("The color has been selected");

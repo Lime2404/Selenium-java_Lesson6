@@ -4,8 +4,7 @@ import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 
 public class ConfigProvider {
-    Config config = readConfig();
-   public static String URL = readConfig().getString("url");
+    public static String URL = readConfig().getString("url");
 
     static Config readConfig() {
         return ConfigFactory.systemProperties().hasPath("testProfile")

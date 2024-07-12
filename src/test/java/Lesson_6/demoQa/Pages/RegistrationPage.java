@@ -17,7 +17,7 @@ public class RegistrationPage extends BaseSeleniumPage {
         PageFactory.initElements(driver, this);
     }
 
-    CalendarComponent calendarComponent= new CalendarComponent();
+    CalendarComponent calendarComponent = new CalendarComponent();
 
     @FindBy(id = "lastName")
     private WebElement lastNameInput;
@@ -64,17 +64,17 @@ public class RegistrationPage extends BaseSeleniumPage {
     @FindBy(id = "adplus-anchor")
     private WebElement adplusAnchor;
 
-    public RegistrationPage setFirstName (String firstName){
+    public RegistrationPage setFirstName(String firstName) {
         firstNameInput.sendKeys(firstName);
         return this;
     }
 
-    public RegistrationPage setLastName (String lastName){
+    public RegistrationPage setLastName(String lastName) {
         lastNameInput.sendKeys(lastName);
-        return  this;
+        return this;
     }
 
-    public RegistrationPage setUserEmail (String mail){
+    public RegistrationPage setUserEmail(String mail) {
         userEmailInput.sendKeys(mail);
         return this;
     }
@@ -85,7 +85,7 @@ public class RegistrationPage extends BaseSeleniumPage {
         return this;
     }
 
-    public RegistrationPage setMobilePhone (String mobilePhone){
+    public RegistrationPage setMobilePhone(String mobilePhone) {
         mobilePhoneInput.sendKeys(mobilePhone);
         return this;
     }
@@ -101,8 +101,9 @@ public class RegistrationPage extends BaseSeleniumPage {
         subjectsInput.sendKeys(Keys.ENTER);
         return this;
     }
-//
-    public RegistrationPage setHobby(String hobby){
+
+    //
+    public RegistrationPage setHobby(String hobby) {
         WebElement hobbyElement = driver.findElement(By.xpath("//*[text()='" + hobby + "']"));
         hobbyElement.click();
         return this;
@@ -120,7 +121,8 @@ public class RegistrationPage extends BaseSeleniumPage {
         currentAddressInput.sendKeys(currentAddress);
         return this;
     }
-//
+
+    //
     public RegistrationPage selectStateFromDropDownList(String state) {
         // Scroll to the state dropdown
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", stateDropDown);
@@ -139,36 +141,13 @@ public class RegistrationPage extends BaseSeleniumPage {
         return this;
     }
 
-    public RegistrationPage clickSubmitButton(){
+    public RegistrationPage clickSubmitButton() {
         submitButton.click();
         return this;
-    }
-
-    public void hideAds() {
-        if (adplusAnchor.isDisplayed()) {
-            adplusAnchor.sendKeys(Keys.DOWN);
-        }
     }
 
     public static void scrollPageDown(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 1000);");
     }
-//
-//    public RegistrationPage checkForm(HashMap<String, String> formSubmit){
-//        for (HashMap.Entry<String, String> entry : formSubmit.entrySet()) {
-//            String key = entry.getKey();
-//            String value = entry.getValue();
-//            $(byCssSelector(".table-responsive")).scrollTo().
-//                    $(byText(key))
-//                    .parent().shouldHave(text(key + " " + value));
-//        }
-//        return this;
-//    }
-
-    //    public void hideAds(){
-//        if (hideAdsButton.isDisplayed()) {
-//            hideAdsButton.click();
-//        }
-//    }
 }

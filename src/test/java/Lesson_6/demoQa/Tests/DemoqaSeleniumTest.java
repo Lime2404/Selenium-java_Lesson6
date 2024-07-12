@@ -11,13 +11,14 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
 public class DemoqaSeleniumTest extends BaseSeleniumTest {
 
-//    7. Output all actions to the console using the Log4j library
+    //    7. Output all actions to the console using the Log4j library
     private static final Logger logger = LogManager.getLogger(DemoqaSeleniumTest.class);
 
 // 2. Using selenium webdriver to develop smoke autotests for the main page
@@ -57,6 +58,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 
 //    3. Using selenium webdriver to develop a test that handles the Progress Bar
 //    element (waiting for it to complete)
+
     /**
      * Handle the Progress Bar element (waiting for it to complete)
      */
@@ -68,14 +70,15 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         while (progressBar.getStartButton().getText().equals("Stop")) {
         }
 
-        if(progressBar.getStartButton().getText().equals("Reset")) {
-            System.out.println("The status of the button turned to = "+ progressBar.getStartButton().getText() + ", progress bar load is 100%");
+        if (progressBar.getStartButton().getText().equals("Reset")) {
+            System.out.println("The status of the button turned to = " + progressBar.getStartButton().getText() + ", progress bar load is 100%");
         }
-        logger.info("The status of the button turned to = "+ progressBar.getStartButton().getText() + ", progress bar load is 100%");
+        logger.info("The status of the button turned to = " + progressBar.getStartButton().getText() + ", progress bar load is 100%");
     }
 
 // 4. Using selenium webdriver to develop a test that selects values from the list //[Red, Green, Purple, Indigo] on the page https://demoqa.com/autocomplete
 //     "Type multiple color names". Important, 2 different values should //be selected at each run (use the Random function).
+
     /**
      * Select color randomly
      */
@@ -88,6 +91,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     }
 
 //   5. Using selenium webdriver to develop an autotest that fills out a form on the page
+
     /**
      * Fill in registration for
      */
@@ -97,20 +101,20 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     void fillFormTest() throws URISyntaxException, InterruptedException {
         RegistrationPage registrationPage = new RegistrationPage();
 
-       String firstName = "Ivan";
-       String lastName = "Ivanov";
-       String userEmailInput = "Ivan.Ivanov@mail.ru";
-       String genderRadioPick = "Male";
-       String mobilePhone = "7123123456";
-       String subject = "Physics";
-       String hobbiesSport = "Sports";
-       String birthdayYear = "1987";
-       String birthdayMonth = "April";
-       String birthdayDate = "24";
-       String state = "NCR";
-       String city = "Delhi";
-       String fileName = "img/Solveva.png";
-       String currentAddressInput = "currentAddress";
+        String firstName = "Ivan";
+        String lastName = "Ivanov";
+        String userEmailInput = "Ivan.Ivanov@mail.ru";
+        String genderRadioPick = "Male";
+        String mobilePhone = "7123123456";
+        String subject = "Physics";
+        String hobbiesSport = "Sports";
+        String birthdayYear = "1987";
+        String birthdayMonth = "April";
+        String birthdayDate = "24";
+        String state = "NCR";
+        String city = "Delhi";
+        String fileName = "img/Solveva.png";
+        String currentAddressInput = "currentAddress";
 
 //                wait(10000);
         registrationPage.setFirstName(firstName);
@@ -133,7 +137,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 // и часто сервак соединение рвет java.net.SocketException: Connection reset
 // посмотрел, что даже на stack overflow с такой же проблемой люди сталкиваются https://stackoverflow.com/questions/76782505/how-i-can-fix-this-warning-org-openqa-selenium-remote-http-websocketlistener-on
 
-@Test
+    @Test
 //may be since I am in Kazakhstan, server sometimes is reseting connection, so I have this test to make sure server is responsive
     void mainTest() {
         HttpClient client = HttpClients.createDefault();

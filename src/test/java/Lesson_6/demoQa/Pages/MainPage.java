@@ -8,12 +8,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 public class MainPage extends BaseSeleniumPage {
 
     private static final Logger logger = LogManager.getLogger(MainPage.class);
-    public MainPage(){
+
+    public MainPage() {
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
         logger.info("The page " + ConfigProvider.URL + " has been opened");
@@ -25,46 +27,16 @@ public class MainPage extends BaseSeleniumPage {
     @FindBy(xpath = "//div[@class='card mt-4 top-card'][1]")
     private WebElement elements;
 
-    @FindBy(id = "adplus-anchor")
-    private WebElement adplusAnchor;
-
-    public String returnCard(){
-    return categoryCards.getText();
+    public String returnCard() {
+        return categoryCards.getText();
     }
 
     public void clickOnElements() {
-            elements.click();
-            logger.info("The element has been clicked"); // вынести в отдельный класс, так как не везде нужны;
+        elements.click();
+        logger.info("The element has been clicked"); // вынести в отдельный класс, так как не везде нужны;
     }
 
-// attempting to scroll down to make sure element is visible and clickable
-        public static WebElement scrollUntilElementVisible(WebDriver driver, String xpath) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(03)); // Настройте таймаут ожидания
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            boolean isVisible = false;
-            WebElement element = null;
-
-            while (!isVisible) {
-                try {
-                    element = driver.findElement(By.xpath(xpath));
-                    isVisible = element.isDisplayed();
-                } catch (Exception e) {
-                    isVisible = false;
-                }
-
-                if (!isVisible) {
-                    js.executeScript("window.scrollBy(0, 250);"); // Прокрутите на 250 пикселей вниз
-                    try {
-                        Thread.sleep(500); // Задержка, чтобы дать странице время для загрузки
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            return element;
-        }
-
+    // attempting to scroll down to make sure element is visible and clickable
     public static void scrollPageDown(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 1000);");

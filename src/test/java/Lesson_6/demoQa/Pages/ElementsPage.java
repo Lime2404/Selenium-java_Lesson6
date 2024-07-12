@@ -7,14 +7,15 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.List;
 
 public class ElementsPage extends BaseSeleniumPage {
     private static final Logger logger = LogManager.getLogger(ElementsPage.class);
 
-    public ElementsPage(){
+    public ElementsPage() {
         PageFactory.initElements(driver, this);
-        logger.info("The page: " + ConfigProvider.URL+"auto-complete" + " has been opened");
+        logger.info("The page: " + ConfigProvider.URL + "auto-complete" + " has been opened");
     }
 
     @FindBy(xpath = "//div[contains(@class, 'element-group')][1]//li[contains(@id, 'item-')]")
