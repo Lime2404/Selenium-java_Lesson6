@@ -33,12 +33,6 @@ public class MainPage extends BaseSeleniumPage {
 
     public void clickOnElements() {
         elements.click();
-        logger.info("The element has been clicked"); // вынести в отдельный класс, так как не везде нужны;
-    }
-
-    // attempting to scroll down to make sure element is visible and clickable
-    public static void scrollPageDown(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 1000);");
+        logger.info("The element has been clicked");
     }
 }

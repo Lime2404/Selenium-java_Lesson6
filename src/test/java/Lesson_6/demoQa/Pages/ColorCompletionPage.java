@@ -12,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.Random;
 
 public class ColorCompletionPage extends BaseSeleniumPage {
-
     private static final Logger logger = LogManager.getLogger(ColorCompletionPage.class);
 
     public ColorCompletionPage() {
@@ -37,7 +36,6 @@ public class ColorCompletionPage extends BaseSeleniumPage {
         String secondColor = colors[secondIndex];
         inputValuesWithSpace(firstColor);
         inputValuesWithSpace(secondColor);
-
     }
 
     private void inputValuesWithSpace(String value) {

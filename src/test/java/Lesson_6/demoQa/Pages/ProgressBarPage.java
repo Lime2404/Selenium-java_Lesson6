@@ -39,9 +39,4 @@ public class ProgressBarPage extends BaseSeleniumPage {
             adplusAnchor.clear();
         }
     }
-
-    public static void scrollPageDown(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 700);");
-    }
 }

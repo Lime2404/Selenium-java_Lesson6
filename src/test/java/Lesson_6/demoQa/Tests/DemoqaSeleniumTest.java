@@ -2,6 +2,7 @@ package Lesson_6.demoQa.Tests;
 
 import Lesson_6.core.BaseSeleniumTest;
 import Lesson_6.demoQa.Pages.*;
+import Lesson_6.utils.ScrollPage;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
@@ -45,7 +46,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     public void verifyElementPageEntities() {
         String[] expectedList = {"Text Box", "Check Box", "Radio Button", "Web Tables", "Buttons", "Links", "Broken Links - Images", "Upload and Download", "Dynamic Properties"};
         MainPage mainPage = new MainPage();
-        mainPage.scrollPageDown(driver);
+        ScrollPage.scrollPageDown(driver);
         mainPage.clickOnElements();
 
         ElementsPage sideBarElements = new ElementsPage();
@@ -65,7 +66,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     @Test
     public void getStartButtonStatus() {
         ProgressBarPage progressBar = new ProgressBarPage();
-        progressBar.scrollPageDown(driver);
+        ScrollPage.scrollPageDown(driver);
         progressBar.clickStartButton();
         while (progressBar.getStartButton().getText().equals("Stop")) {
         }
@@ -86,12 +87,12 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     public void pickColorFromList() throws InterruptedException {
         ColorCompletionPage colorCompletionPage = new ColorCompletionPage();
         String[] colors = {"Red", "Green", "Purple", "Indigo"};
+        ScrollPage.scrollPageDown(driver);
         colorCompletionPage.randomizer(colors);
         logger.info("Two random color sets have been selected");
     }
 
 //   5. Using selenium webdriver to develop an autotest that fills out a form on the page
-
     /**
      * Fill in registration for
      */
@@ -123,6 +124,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         registrationPage.setMobilePhone(mobilePhone);
         registrationPage.chooseGenderInWrapper(genderRadioPick);
         registrationPage.setSubjectBySendKeys(subject);
+        ScrollPage.scrollPageDown(driver);
         registrationPage.setHobby(hobbiesSport);
         registrationPage.setCurrentAddress(currentAddressInput);
         registrationPage.selectStateFromDropDownList(state);
