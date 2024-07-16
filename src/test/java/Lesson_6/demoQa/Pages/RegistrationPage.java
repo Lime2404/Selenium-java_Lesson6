@@ -55,11 +55,14 @@ public class RegistrationPage extends BaseSeleniumPage {
     @FindBy(id = "stateCity-wrapper")
     private WebElement cityDropDownWrapper;
 
-    @FindBy(id = "close-fixedban")
+    @FindBy(id = "google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0")
     private WebElement hideAdsButton;
 
     @FindBy(id = "submit")
     private WebElement submitButton;
+
+    @FindBy(id = "google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0")
+    private WebElement googleAdd;
 
     @FindBy(id = "adplus-anchor")
     private WebElement adplusAnchor;
@@ -144,10 +147,5 @@ public class RegistrationPage extends BaseSeleniumPage {
     public RegistrationPage clickSubmitButton() {
         submitButton.click();
         return this;
-    }
-
-    public static void scrollPageDown(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 1000);");
     }
 }

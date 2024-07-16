@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
@@ -93,11 +94,13 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     }
 
 //   5. Using selenium webdriver to develop an autotest that fills out a form on the page
+
     /**
      * Fill in registration for
      */
     @Test
     // Cергей, подскажи, надо ли еще проверять что всё засетилось? судя по задание надо только заполнить, но наверное надо типо проверить что всё реально засетилось
+    // Я тут натыкал методов   ScrollPage.scrollPageDown(driver) так как значения не сетятся иначе
 
     void fillFormTest() throws URISyntaxException, InterruptedException {
         RegistrationPage registrationPage = new RegistrationPage();
@@ -122,6 +125,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         registrationPage.setLastName(lastName);
         registrationPage.setUserEmail(userEmailInput);
         registrationPage.setMobilePhone(mobilePhone);
+        ScrollPage.scrollPageDown(driver);
         registrationPage.chooseGenderInWrapper(genderRadioPick);
         registrationPage.setSubjectBySendKeys(subject);
         ScrollPage.scrollPageDown(driver);
@@ -131,12 +135,14 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         registrationPage.selectCityFromDropDownList(city);
         registrationPage.uploadPicture(fileName);
         registrationPage.setBirthDate(birthdayYear, birthdayMonth, birthdayDate);
+        ScrollPage.scrollPageDown(driver);  // можно обработку на JS прикрутить, но скролл тоже работает
         registrationPage.clickSubmitButton();
         logger.info("The form is fully filled");
+        wait(10000L);
     }
 
-// Cерег привет. Слушай, не могу победить вот этот warning org.openqa.selenium.remote.http.WebSocket$Listener onError
-// и часто сервак соединение рвет java.net.SocketException: Connection reset
+// Cерег привет. Слушай, не могу победить вот этот warning java.lang.IllegalMonitorStateException: current thread is not owner
+// и часто сервак соединение рвет java.net.SocketException: Connection reset. Но в дебаге всё нормально сетится
 // посмотрел, что даже на stack overflow с такой же проблемой люди сталкиваются https://stackoverflow.com/questions/76782505/how-i-can-fix-this-warning-org-openqa-selenium-remote-http-websocketlistener-on
 
     @Test
