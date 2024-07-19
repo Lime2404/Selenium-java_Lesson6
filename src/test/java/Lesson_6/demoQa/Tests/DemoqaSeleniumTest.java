@@ -138,7 +138,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         ScrollPage.scrollPageDown(driver);  // можно обработку на JS прикрутить, но скролл тоже работает
         registrationPage.clickSubmitButton();
         logger.info("The form is fully filled");
-        wait(10000L);
+//        wait(10000L);
     }
 
 // Cерег привет. Слушай, не могу победить вот этот warning java.lang.IllegalMonitorStateException: current thread is not owner
