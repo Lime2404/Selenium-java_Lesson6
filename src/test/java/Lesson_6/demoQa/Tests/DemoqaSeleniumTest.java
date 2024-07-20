@@ -90,9 +90,9 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         String[] colors = {"Red", "Green", "Purple", "Indigo"};
         ScrollPage.scrollPageDown(driver);
         colorCompletionPage.randomizer(colors);
-        logger.info("Two random color sets have been selected");
         Assertions.assertTrue(colorCompletionPage.firstColorSelected());
         Assertions.assertTrue(colorCompletionPage.secondColorSelected());
+        logger.info("Two random color sets have been selected");
     }
 
 //   5. Using selenium webdriver to develop an autotest that fills out a form on the page
