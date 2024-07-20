@@ -23,6 +23,13 @@ public class ColorCompletionPage extends BaseSeleniumPage {
     @FindBy(xpath = "//input[@id='autoCompleteMultipleInput']")
     private WebElement inputElement;
 
+    @FindBy(xpath = "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][1]")
+    private WebElement firstColor;
+
+    @FindBy(xpath = "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][2]")
+    private WebElement secondColor;
+
+
     public void randomizer(String[] colors) {
         Random random = new Random();
         int firstIndex = random.nextInt(colors.length);
@@ -42,5 +49,12 @@ public class ColorCompletionPage extends BaseSeleniumPage {
         inputElement.sendKeys(value);
         inputElement.sendKeys(Keys.ENTER);
         logger.info("The color has been selected");
+    }
+
+    public boolean firstColorSelected(){
+        return firstColor.isDisplayed();
+    }
+    public boolean secondColorSelected(){
+        return secondColor.isDisplayed();
     }
 }

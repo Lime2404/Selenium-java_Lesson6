@@ -11,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
@@ -75,6 +74,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         if (progressBar.getStartButton().getText().equals("Reset")) {
             System.out.println("The status of the button turned to = " + progressBar.getStartButton().getText() + ", progress bar load is 100%");
         }
+        Assertions.assertTrue(progressBar.getStartButton().getText().equals("Reset"));
         logger.info("The status of the button turned to = " + progressBar.getStartButton().getText() + ", progress bar load is 100%");
     }
 
@@ -85,12 +85,14 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
      * Select color randomly
      */
     @Test
-    public void pickColorFromList() throws InterruptedException {
+    public void pickColorFromList() {
         ColorCompletionPage colorCompletionPage = new ColorCompletionPage();
         String[] colors = {"Red", "Green", "Purple", "Indigo"};
         ScrollPage.scrollPageDown(driver);
         colorCompletionPage.randomizer(colors);
         logger.info("Two random color sets have been selected");
+        Assertions.assertTrue(colorCompletionPage.firstColorSelected());
+        Assertions.assertTrue(colorCompletionPage.secondColorSelected());
     }
 
 //   5. Using selenium webdriver to develop an autotest that fills out a form on the page
@@ -99,7 +101,6 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
      * Fill in registration for
      */
     @Test
-    // Cергей, подскажи, надо ли еще проверять что всё засетилось? судя по задание надо только заполнить, но наверное надо типо проверить что всё реально засетилось
     // Я тут натыкал методов   ScrollPage.scrollPageDown(driver) так как значения не сетятся иначе
 
     void fillFormTest() throws URISyntaxException {
