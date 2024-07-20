@@ -102,7 +102,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
     // Cергей, подскажи, надо ли еще проверять что всё засетилось? судя по задание надо только заполнить, но наверное надо типо проверить что всё реально засетилось
     // Я тут натыкал методов   ScrollPage.scrollPageDown(driver) так как значения не сетятся иначе
 
-    void fillFormTest() throws URISyntaxException, InterruptedException {
+    void fillFormTest() throws URISyntaxException {
         RegistrationPage registrationPage = new RegistrationPage();
 
         String firstName = "Ivan";
@@ -120,7 +120,6 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         String fileName = "img/Solveva.png";
         String currentAddressInput = "currentAddress";
 
-//                wait(10000);
         registrationPage.setFirstName(firstName);
         registrationPage.setLastName(lastName);
         registrationPage.setUserEmail(userEmailInput);
@@ -137,12 +136,12 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         registrationPage.setBirthDate(birthdayYear, birthdayMonth, birthdayDate);
         ScrollPage.scrollPageDown(driver);  // можно обработку на JS прикрутить, но скролл тоже работает
         registrationPage.clickSubmitButton();
+        Assertions.assertTrue(registrationPage.checkTableVisible());
         logger.info("The form is fully filled");
-//        wait(10000L);
     }
 
-// Cерег привет. Слушай, не могу победить вот этот warning java.lang.IllegalMonitorStateException: current thread is not owner
-// и часто сервак соединение рвет java.net.SocketException: Connection reset. Но в дебаге всё нормально сетится
+// Cерег привет. Слушай, не могу победить вот этот warning : org.openqa.selenium.remote.http.WebSocket$Listener onError
+//WARNING: Connection reset Но в дебаге всё нормально сетится
 // посмотрел, что даже на stack overflow с такой же проблемой люди сталкиваются https://stackoverflow.com/questions/76782505/how-i-can-fix-this-warning-org-openqa-selenium-remote-http-websocketlistener-on
 
     @Test

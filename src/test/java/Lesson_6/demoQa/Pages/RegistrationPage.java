@@ -67,6 +67,9 @@ public class RegistrationPage extends BaseSeleniumPage {
     @FindBy(id = "adplus-anchor")
     private WebElement adplusAnchor;
 
+    @FindBy(css = ".table-responsive")
+    private WebElement tableResponsive;
+
     public RegistrationPage setFirstName(String firstName) {
         firstNameInput.sendKeys(firstName);
         return this;
@@ -147,5 +150,9 @@ public class RegistrationPage extends BaseSeleniumPage {
     public RegistrationPage clickSubmitButton() {
         submitButton.click();
         return this;
+    }
+
+    public Boolean checkTableVisible(){
+        return tableResponsive.isDisplayed();
     }
 }
