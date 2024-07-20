@@ -13,6 +13,16 @@ import java.util.Random;
 
 public class ColorCompletionPage extends BaseSeleniumPage {
     private static final Logger logger = LogManager.getLogger(ColorCompletionPage.class);
+    private String firstColorPlaceholder = null;
+    private String secondColorPlaceholder = null;
+
+    public String getFirstColorPlaceholder() {
+        return firstColorPlaceholder;
+    }
+
+    public String getSecondColorPlaceholder() {
+        return secondColorPlaceholder;
+    }
 
     public ColorCompletionPage() {
         driver.get(ConfigProvider.URL + "auto-complete");
@@ -24,10 +34,10 @@ public class ColorCompletionPage extends BaseSeleniumPage {
     private WebElement inputElement;
 
     @FindBy(xpath = "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][1]")
-    private WebElement firstColor;
+    private WebElement firstColorElement;
 
     @FindBy(xpath = "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][2]")
-    private WebElement secondColor;
+    private WebElement secondColorElement;
 
 
     public void randomizer(String[] colors) {
@@ -43,6 +53,8 @@ public class ColorCompletionPage extends BaseSeleniumPage {
         String secondColor = colors[secondIndex];
         inputValuesWithSpace(firstColor);
         inputValuesWithSpace(secondColor);
+        firstColorPlaceholder = firstColor;
+        secondColorPlaceholder = secondColor;
     }
 
     private void inputValuesWithSpace(String value) {
@@ -51,10 +63,11 @@ public class ColorCompletionPage extends BaseSeleniumPage {
         logger.info("The color has been selected");
     }
 
-    public boolean firstColorSelected(){
-        return firstColor.isDisplayed();
+    public String firstColorSelected() {
+        return firstColorElement.getText();
     }
-    public boolean secondColorSelected(){
-        return secondColor.isDisplayed();
+
+    public String secondColorSelected() {
+        return secondColorElement.getText();
     }
 }

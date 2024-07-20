@@ -59,7 +59,6 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 
 //    3. Using selenium webdriver to develop a test that handles the Progress Bar
 //    element (waiting for it to complete)
-
     /**
      * Handle the Progress Bar element (waiting for it to complete)
      */
@@ -81,7 +80,6 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
 
 // 4. Using selenium webdriver to develop a test that selects values from the list //[Red, Green, Purple, Indigo] on the page https://demoqa.com/autocomplete
 //     "Type multiple color names". Important, 2 different values should //be selected at each run (use the Random function).
-
     /**
      * Select color randomly
      */
@@ -91,8 +89,8 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
         String[] colors = {"Red", "Green", "Purple", "Indigo"};
         ScrollPage.scrollPageDown(driver);
         colorCompletionPage.randomizer(colors);
-        Assertions.assertTrue(colorCompletionPage.firstColorSelected());
-        Assertions.assertTrue(colorCompletionPage.secondColorSelected());
+        Assertions.assertEquals(colorCompletionPage.getFirstColorPlaceholder(),colorCompletionPage.firstColorSelected());
+        Assertions.assertEquals(colorCompletionPage.getSecondColorPlaceholder(), colorCompletionPage.secondColorSelected());
         logger.info("Two random color sets have been selected");
     }
 
