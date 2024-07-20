@@ -35,12 +35,7 @@ public class ProgressBarPage extends BaseSeleniumPage {
         return startButton;
     }
 
-    public void hideAds() {
-        if (adplusAnchor.isDisplayed()) {
-            adplusAnchor.clear();
-        }
-    }
     public String checkAreaValue() {
-      return   ariaValue.getAttribute("aria-valuenow");
-        }
+        return ariaValue.getAttribute("aria-valuenow");
+    }
 }
