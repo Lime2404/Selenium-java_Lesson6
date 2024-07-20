@@ -75,6 +75,7 @@ public class DemoqaSeleniumTest extends BaseSeleniumTest {
             System.out.println("The status of the button turned to = " + progressBar.getStartButton().getText() + ", progress bar load is 100%");
         }
         Assertions.assertTrue(progressBar.getStartButton().getText().equals("Reset"));
+        Assertions.assertTrue(progressBar.checkAreaValue().equals("100"));
         logger.info("The status of the button turned to = " + progressBar.getStartButton().getText() + ", progress bar load is 100%");
     }
 

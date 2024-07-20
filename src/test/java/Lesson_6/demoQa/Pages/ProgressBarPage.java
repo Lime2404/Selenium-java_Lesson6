@@ -23,6 +23,9 @@ public class ProgressBarPage extends BaseSeleniumPage {
     @FindBy(id = "google_ads_iframe_/21849154601,22343295815/Ad.Plus-Anchor_0")
     private WebElement adplusAnchor;
 
+    @FindBy(xpath = "//div[@class='progress-bar bg-success']")
+    private WebElement ariaValue;
+
     public void clickStartButton() {
         startButton.click();
         logger.info("The Start button has been pressed");
@@ -37,4 +40,7 @@ public class ProgressBarPage extends BaseSeleniumPage {
             adplusAnchor.clear();
         }
     }
+    public String checkAreaValue() {
+      return   ariaValue.getAttribute("aria-valuenow");
+        }
 }
