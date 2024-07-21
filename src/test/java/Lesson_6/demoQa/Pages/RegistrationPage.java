@@ -108,13 +108,11 @@ public class RegistrationPage extends BaseSeleniumPage {
         return this;
     }
 
-    //
     public RegistrationPage setHobby(String hobby) {
         WebElement hobbyElement = driver.findElement(By.xpath("//*[text()='" + hobby + "']"));
         hobbyElement.click();
         return this;
     }
-
 
     public RegistrationPage uploadPicture(String fileName) throws URISyntaxException {
 
@@ -128,13 +126,11 @@ public class RegistrationPage extends BaseSeleniumPage {
         return this;
     }
 
-    //
     public RegistrationPage selectStateFromDropDownList(String state) {
-        // Scroll to the state dropdown
+
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", stateDropDown);
         stateDropDown.click();
 
-        // Locate and click on the state option
         WebElement stateElement = driver.findElement(By.xpath("//*[text()='" + state + "']"));
         stateElement.click();
         return this;
