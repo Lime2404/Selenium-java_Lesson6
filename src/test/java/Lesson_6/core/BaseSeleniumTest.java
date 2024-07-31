@@ -19,7 +19,6 @@ abstract public class BaseSeleniumTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        logger.info("ChromeDriver has been initialized - " + getCallerClassName());
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -30,10 +29,5 @@ abstract public class BaseSeleniumTest {
     public void tearDown() {
         logger.info("Browser is closed");
         driver.quit();
-    }
-
-    private static String getCallerClassName() {
-        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        return stackTrace[3].getClassName();
     }
 }
