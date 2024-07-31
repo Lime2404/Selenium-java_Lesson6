@@ -28,7 +28,6 @@ abstract public class BaseSeleniumTest {
 
     @AfterEach
     public void tearDown() {
-        driver.close();
         logger.info("Browser is closed");
         driver.quit();
     }
