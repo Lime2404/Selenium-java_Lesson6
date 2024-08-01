@@ -12,9 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 // 1. Create a Maven project (Java) using the listed libraries
 abstract public class BaseSeleniumTest {
-    private static final Logger logger = LogManager.getLogger(BaseSeleniumTest.class.getName());
+    private static final Logger logger = LogManager.getLogger(BaseSeleniumTest.class);
     protected WebDriver driver;
-
+    
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
